@@ -13,15 +13,16 @@ LANGUAGE_CHOICES = sorted([(item[1][0], item[0]) for item in LEXERS])
 STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 class Snippet(models.Model):
-    created = models.DateTimeField(default=lambda: timezone.localtime(timezone.now()))
+    created = models.DateTimeField(default=timezone.now)
     switch = models.CharField(max_length=100, blank=True, default='Switch1')
     room = models.CharField(max_length=100, blank=True, default='Living Room')
     status = models.BooleanField('ON', default=True)
     switch = models.CharField(max_length=100, blank=True, default='SW1')
+    current_value = models.CharField(max_length=100, blank=True)
 
     class Meta:
         ordering = ('created',)
-        
 
 
-    
+
+
